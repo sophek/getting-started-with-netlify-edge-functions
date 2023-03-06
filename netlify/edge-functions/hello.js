@@ -1,9 +1,9 @@
 export default async (request, context) => {
   context.log("Calling hello.js edge function");
 
-  const foo = import.meta.env.FOOBAR;
+  const { FOOBAR } = process.env;
 
-  return new Response("Hello, World from the edge!" + foo, {
+  return new Response("Hello, World from the edge!" + FOOBAR, {
     headers: { "content-type": "text/html" },
   });
 };
